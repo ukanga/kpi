@@ -98,6 +98,11 @@ export const KEY_CODES = Object.freeze({
   NBSP: 160, // non-breakable space
 });
 
+export enum KeyNames {
+  Enter = 'Enter',
+  Escape = 'Escape',
+};
+
 export const MODAL_TYPES = {
   SHARING: 'sharing',
   UPLOADING_XLS: 'uploading-xls',
