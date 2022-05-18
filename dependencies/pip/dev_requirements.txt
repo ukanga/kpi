@@ -46,11 +46,11 @@ botocore==1.24.35
     # via
     #   boto3
     #   s3transfer
-celery[redis]==5.2.6
-    # via
-    #   -r dependencies/pip/requirements.in
-    #   django-celery-beat
-certifi==2021.10.8
+cachetools==5.0.0
+    # via google-auth
+celery[redis]==4.3.0
+    # via -r dependencies/pip/requirements.in
+certifi==2019.9.11
     # via requests
 cffi==1.15.0
     # via
@@ -85,9 +85,16 @@ cryptography==36.0.2
     #   pyopenssl
 cssselect==1.1.0
     # via pyquery
-decorator==5.1.1
-    # via ipython
-deepmerge==1.0.1
+decorator==4.4.1
+    # via
+    #   ipython
+    #   moviepy
+    #   traitlets
+deepmerge==0.3.0
+    # via -r dependencies/pip/requirements.in
+defusedxml==0.6.0
+    # via djangorestframework-xml
+dicttoxml==1.7.4
     # via -r dependencies/pip/requirements.in
 defusedxml==0.7.1
     # via
@@ -201,11 +208,52 @@ geojson-rewind==1.0.2
     # via
     #   -r dependencies/pip/requirements.in
     #   formpack
-idna==3.3
+google-api-core[grpc]==2.5.0
+    # via
+    #   google-cloud-core
+    #   google-cloud-speech
+    #   google-cloud-storage
+    #   google-cloud-translate
+google-auth==2.6.0
+    # via
+    #   google-api-core
+    #   google-cloud-core
+    #   google-cloud-storage
+google-cloud-core==2.2.2
+    # via
+    #   google-cloud-storage
+    #   google-cloud-translate
+google-cloud-speech==2.12.0
+    # via -r dependencies/pip/requirements.in
+google-cloud-storage==2.1.0
+    # via -r dependencies/pip/requirements.in
+google-cloud-translate==3.6.1
+    # via -r dependencies/pip/requirements.in
+google-crc32c==1.3.0
+    # via google-resumable-media
+google-resumable-media==2.2.1
+    # via google-cloud-storage
+googleapis-common-protos==1.54.0
+    # via
+    #   google-api-core
+    #   grpcio-status
+grpcio==1.43.0
+    # via
+    #   google-api-core
+    #   grpcio-status
+grpcio-status==1.43.0
+    # via google-api-core
+idna==2.8
     # via requests
-iniconfig==1.1.1
-    # via pytest
-invoke==1.7.0
+imageio==2.16.0
+    # via moviepy
+imageio-ffmpeg==0.4.5
+    # via moviepy
+importlib-metadata==1.7.0
+    # via
+    #   kombu
+    #   path-py
+invoke==1.3.0
     # via fabric
 ipython==8.2.0
     # via -r dependencies/pip/dev_requirements.in
@@ -228,7 +276,9 @@ kombu==5.2.4
     # via
     #   -r dependencies/pip/requirements.in
     #   celery
-lxml==4.8.0
+libcst==0.4.1
+    # via google-cloud-speech
+lxml==4.4.1
     # via
     #   -r dependencies/pip/requirements.in
     #   formpack
@@ -243,9 +293,21 @@ mock==4.0.3
     # via -r dependencies/pip/dev_requirements.in
 mongomock==4.0.0
     # via -r dependencies/pip/dev_requirements.in
+more-itertools==7.2.0
+    # via
+    #   pytest
+    #   zipp
+moviepy==1.0.3
+    # via -r dependencies/pip/requirements.in
+mypy-extensions==0.4.3
+    # via typing-inspect
 ndg-httpsclient==0.5.1
     # via -r dependencies/pip/requirements.in
-oauthlib==3.2.0
+numpy==1.22.2
+    # via
+    #   imageio
+    #   moviepy
+oauthlib==3.1.0
     # via
     #   -r dependencies/pip/requirements.in
     #   django-oauth-toolkit
@@ -274,15 +336,28 @@ pexpect==4.8.0
     # via ipython
 pickleshare==0.7.5
     # via ipython
-pillow==9.1.0
-    # via django-markdownx
-pluggy==1.0.0
-    # via pytest
-prompt-toolkit==3.0.29
+pillow==9.0.1
     # via
-    #   click-repl
-    #   ipython
-psycopg2==2.8.6
+    #   django-markdownx
+    #   imageio
+pluggy==0.13.0
+    # via pytest
+proglog==0.1.9
+    # via moviepy
+prompt-toolkit==2.0.10
+    # via ipython
+proto-plus==1.20.1
+    # via
+    #   google-cloud-speech
+    #   google-cloud-translate
+protobuf==3.19.4
+    # via
+    #   google-api-core
+    #   google-cloud-storage
+    #   googleapis-common-protos
+    #   grpcio-status
+    #   proto-plus
+psycopg2==2.8.4
     # via -r dependencies/pip/requirements.in
 ptyprocess==0.7.0
     # via pexpect
@@ -294,7 +369,11 @@ pyasn1==0.4.8
     # via
     #   -r dependencies/pip/requirements.in
     #   ndg-httpsclient
-pycparser==2.21
+    #   pyasn1-modules
+    #   rsa
+pyasn1-modules==0.2.8
+    # via google-auth
+pycparser==2.19
     # via cffi
 pygments==2.11.2
     # via
@@ -349,8 +428,10 @@ pyxform==1.9.0
     #   -r dependencies/pip/requirements.in
     #   formpack
 pyyaml==6.0
-    # via oyaml
-redis==4.2.2
+    # via
+    #   libcst
+    #   oyaml
+redis==3.3.11
     # via
     #   celery
     #   django-redis-sessions
@@ -359,13 +440,18 @@ requests==2.27.1
     #   -r dependencies/pip/requirements.in
     #   coveralls
     #   django-oauth-toolkit
+    #   google-api-core
+    #   google-cloud-storage
+    #   moviepy
     #   responses
     #   smsapi-client
     #   twilio
     #   yubico-client
 responses==0.20.0
     # via -r dependencies/pip/requirements.in
-s3transfer==0.5.2
+rsa==4.8
+    # via google-auth
+s3transfer==0.2.1
     # via boto3
 sentinels==1.0.0
     # via mongomock
@@ -375,7 +461,10 @@ six==1.16.0
     # via
     #   asttokens
     #   bcrypt
-    #   click-repl
+    #   cryptography
+    #   django-extensions
+    #   google-auth
+    #   grpcio
     #   jsonschema
     #   mongomock
     #   paramiko
@@ -398,16 +487,22 @@ statistics==1.0.3.5
     # via formpack
 tabulate==0.8.9
     # via -r dependencies/pip/requirements.in
-tomli==2.0.1
+toml==0.10.2
+    # via pytest-cov
+tqdm==4.62.3
     # via
-    #   coverage
-    #   pytest
-traitlets==5.1.1
-    # via
-    #   ipython
-    #   matplotlib-inline
-twilio==7.8.0
+    #   moviepy
+    #   proglog
+traitlets==4.3.3
+    # via ipython
+twilio==7.3.0
     # via django-trench
+typing-extensions==4.1.1
+    # via
+    #   libcst
+    #   typing-inspect
+typing-inspect==0.7.1
+    # via libcst
 unicodecsv==0.14.1
     # via -r dependencies/pip/requirements.in
 urllib3==1.26.9
